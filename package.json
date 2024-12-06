@@ -1,0 +1,31 @@
+{
+  "name": "remoterolenodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start:dev",
+    "start:prod": "node dist/server.js",
+    "start:dev": "nodemon --exec ts-node server.ts"
+  },
+  "keywords": [
+    "socket",
+    "chat",
+    "real time"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.17.1",
+    "nodemon": "^3.1.7",
+    "remoterolenodejs": "file:",
+    "socket.io": "^4.8.1"
+  }
+}
