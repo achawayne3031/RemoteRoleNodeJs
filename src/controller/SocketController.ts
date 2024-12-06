@@ -62,7 +62,7 @@ const socketController = {
     getMessage: async(data: MarkAsRead) => {
         connectedUsers = connectedUsers.map((userData: User) => {
             let userMessages = userData.messages;
-            userMessages.map((innerMessage) => {
+            userMessages.map((innerMessage: MessageBody) => {
                 if(innerMessage.to == data.to && innerMessage.from == data.from){
                     innerMessage.read = true
                 }
@@ -77,7 +77,7 @@ const socketController = {
     updateOpenedNotification: async(data: MarkAsRead) => {
         connectedUsers = connectedUsers.map((userData: User) => {
             let userMessages = userData.messages;
-            userMessages.map((innerMessage) => {
+            userMessages.map((innerMessage: MessageBody) => {
                 if(innerMessage.to == data.to && innerMessage.from == data.from){
                     innerMessage.read = true
                 }
