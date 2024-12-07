@@ -33,6 +33,7 @@ const socketController = {
                 return value;
             })
         }
+        //// send list of connected users to the client /////
         io.emit('emit-connected-user-list', connectedUsers);
     },
 
@@ -55,6 +56,7 @@ const socketController = {
             })
         }
 
+        //// send users with the messages /////
         io.emit("emit-sent-message", connectedUsers);
     },
 
@@ -71,6 +73,7 @@ const socketController = {
             return userData
         })
 
+        //// send users get messages /////
         io.emit("emit-get-message", connectedUsers);
     },
 
@@ -86,12 +89,14 @@ const socketController = {
             return userData
         })
 
+        //// send opened messages /////
         io.emit("emit-opened-notification", connectedUsers);
     },
 
     
 
     leaveRoom: async (socketInstance: Socket) => {
+        /// Disconnect a user ////
         let d = new Date()
         connectedUsers = connectedUsers.map((value) => {
             if(value.socketKey == socketInstance.handshake.query.socketKey){
@@ -100,6 +105,7 @@ const socketController = {
             }
             return value;
         })  
+
         io.emit("emit-active-users", connectedUsers);
     },
 
@@ -111,11 +117,12 @@ const socketController = {
     getAllConnectedUsers() {
         io.emit('emit-connected-user-list', connectedUsers);
     },
-    
-    getAllActiveUsers: async (socketInstance: Socket) => {
-     //   socketInstance.emit('emit-active-user-list', activeUsersList);
-    }
 
+    serverShutDown(){
+        connectedUsers = [];
+    }
+    
+  
 }
 
 

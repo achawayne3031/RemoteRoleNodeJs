@@ -37,7 +37,7 @@ io.on('connection', (socket) => {
 
     
 
-     // Handle disconnection
+     // Handle disconnection ///
     socket.on('disconnect', async () => {
         await socketController.leaveRoom(socket)
         let currentUser = await socketController.getAllConnectedUsers()
@@ -47,12 +47,11 @@ io.on('connection', (socket) => {
     // Listen for ping event from the client, keep the client connected
     socket.on('ping', () => {
         // Respond with a pong
-        console.log('we gat pingged.....')
         socketController.keepConnectionAlive()
     });
 
     socket.on('connected-user-list', () => {
-        // Respond with a pong
+        // Respond with a pong /////
         socketController.getAllConnectedUsers()
     });
  });
@@ -73,6 +72,7 @@ server.listen(port, () => {
 // Improved graceful shutdown
 function gracefulShutdown() {
   server.close(() => {
+    socketController.serverShutDown()
       console.log('\nExpress server closed');
       // Ensure the queue stops before exiting the process
       process.exit(0)
