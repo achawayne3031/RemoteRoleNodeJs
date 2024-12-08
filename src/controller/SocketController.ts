@@ -118,10 +118,13 @@ const socketController = {
         io.emit('emit-connected-user-list', connectedUsers);
     },
 
-    serverShutDown(){
+    serverShutDown: () => {
         connectedUsers = [];
-    }
+    },
     
+    serverError: (error) => {
+        io.emit('emit-server-error', error);
+    }
   
 }
 

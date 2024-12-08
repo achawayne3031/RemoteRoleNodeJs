@@ -34,6 +34,10 @@ io.on('connection', (socket) => {
     });
    
 
+    ///// handle Error ////
+    socket.on("error", (err) => {
+        socketController.serverError(err)
+    });
     
 
      // Handle disconnection ///
