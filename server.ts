@@ -15,7 +15,6 @@ io.on('connection', (socket) => {
     socket.on('connected', (data: User) => {
         socketController.connected(socket, data);
         socketController.getAllConnectedUsers()
-
     });
 
 
